@@ -1,10 +1,10 @@
 # Chat
 
-# Hi there 👋 <img align="right" src="https://profile-counter.glitch.me/XiaoWendell/count.svg" alt="XiaoWendell" />
+# Hi there 👋 <img align="right" src="https://profile-counter.glitch.me/yen-chiu/count.svg" alt="yen-chiu" />
 
-![dino](https://raw.githubusercontent.com/XiaoWendell/ProjectAssets/master/images/GIF/dino.gif 'dino')
+![dino](https://raw.githubusercontent.com/yen-chiu/ProjectAssets/master/images/GIF/dino.gif 'dino')
 
-我是 Wendell，一名业余编程爱好者，这是我的[个人平台](https://XiaoWendell.github.io/)。
+我是 Wendell，一名业余编程爱好者，这是我的[个人平台](https://yen-chiu.github.io/)。
 
 # 致谢
 
@@ -12,4 +12,4 @@
 
 # License
 
-遵循 MIT 许可证。有关详细,请参阅 [LICENSE](https://github.com/XiaoWendell/XiaoWendell.github.io/blob/master/LICENSE)。
+遵循 MIT 许可证。有关详细,请参阅 [LICENSE](https://github.com/yen-chiu/yen-chiu.github.io/blob/master/LICENSE)。
