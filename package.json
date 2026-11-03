@@ -1,9 +1,9 @@
 {
-  "name": "OviliaBlog",
-  "version": "0.1.0",
-  "description": "Ovilia's Blog",
+  "name": "wendell-chat",
+  "version": "1.0.0",
+  "description": "与念真聊天中 —— 一个可以聊天的个人小站",
   "main": "gulpfile.js",
-  "author": "Ovilia",
+  "author": "Wendell",
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -19,11 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ovilia/blog"
+    "url": "https://github.com/yen-chiu/Chat"
   },
   "keywords": [
-    "gulp",
-    "sass",
-    "browsersync"
+    "chat",
+    "vue",
+    "static-site",
+    "personal"
   ]
 }
