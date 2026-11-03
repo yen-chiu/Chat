@@ -4,7 +4,7 @@
 
 ![dino](https://raw.githubusercontent.com/yen-chiu/ProjectAssets/master/images/GIF/dino.gif 'dino')
 
-我是 Wendell，一名业余编程爱好者，这是我的[个人平台](https://yen-chiu.github.io/)。
+我是 Wendell，一名业余编程爱好者，这是我的[个人平台](https://yenchiu.com/)。
 
 # 致谢
 

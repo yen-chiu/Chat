@@ -3,16 +3,28 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=100%, initial-scale=1">
-    <!--<link rel="shortcut icon" href="blog/img/owl.ico">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#22c3aa">
+    <meta name="description" content="与念真聊天中 —— 一个可以聊天的个人小站，来自 Wendell 的博客。">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="与念真聊天中">
+    <meta property="og:description" content="一个可以聊天的个人小站，点一下「说点什么」开始。">
+    <meta property="og:image" content="img/ai_self.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <title>与念真聊天中</title>
     <link href="css/main.min.css" rel="stylesheet" type="text/css">
+    <link href="css/enhance.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div id="mobile" :class="{ 'has-prompt': hasPrompt }">
         <div id="mobile-head">
+            <a class="mobile-head-btn" id="mobile-back" href="https://yenchiu.com/" title="返回博客"
+                aria-label="返回博客">&#8592;</a>
             <div id="mobile-head-title">与念真聊天中</div>
+            <button type="button" class="mobile-head-btn" id="restart-btn" title="重新开始"
+                aria-label="重新开始">&#8635;</button>
         </div>
         <div id="mobile-body">
             <div id="mobile-body-bg"></div>
@@ -60,7 +72,7 @@
     </div>
 
     <div class="extra-link" id="meta-link">
-        <!--<a id="en-link" class="letters" href="/2016" target="_blank">
+        <!--<a id="en-link" class="letters" href="https://yenchiu.com/archives/" target="_blank">
                 EN
             </a>-->
 
@@ -68,7 +80,7 @@
             Source code
         </a>
 
-        <a class="letters" href="https://yen-chiu.github.io" target="_blank">
+        <a class="letters" href="https://yenchiu.com" target="_blank">
             Blog
         </a>
 
@@ -205,20 +217,13 @@
     </div>
 
     <script src="lib/zepto.min.js"></script>
-    <script src="lib/vue.js"></script>
+    <script src="lib/vue.min.js"></script>
 
     <script src="js/index-min.js"></script>
+    <script src="js/enhance.js"></script>
 
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-38205696-1']);
-        _gaq.push(['_trackPageview']);
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
+    <!-- 原站点带的是设计师的 UA-38205696-1，早已失效；为隐私与性能一并移除 -->
+
 </body>
 
 </html>
