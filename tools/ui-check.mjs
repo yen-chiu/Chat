@@ -48,6 +48,9 @@ const chrome = spawn(
     '--disable-gpu',
     '--no-sandbox',
     '--no-first-run',
+    // storage-file 会先改 localStorage 再回跳；回跳若命中 BFCache，脚本不会重跑
+    '--disable-back-forward-cache',
+    '--disable-features=BackForwardCache',
     '--hide-scrollbars',
     '--disable-extensions',
     `--window-size=${width},${height}`,
