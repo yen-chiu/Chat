@@ -92,7 +92,7 @@ python -m http.server 8000
 
 - 没有后端、没有统计脚本；图片和字体都在仓库里。
 - AI 的 Key 与对话只存在本机浏览器；「清空 Key」会把 Key 从 storage 里删掉。
-- 联网搜索和读网页会经本站的只读代理（`auth.yenchiu.com`，Cloudflare Worker）转一次：代理只把公开网页/搜索结果取回来，不保存查询内容、不存 Key。想完全绕开它，就在设置里换成自己的 SearXNG / 读取代理。
+- 联网搜索和读网页会经本站的只读代理（`api.yenchiu.com`，Cloudflare Worker）转一次：代理只把公开网页/搜索结果取回来，不保存查询内容、不存 Key。想完全绕开它，就在设置里换成自己的 SearXNG / 读取代理。
 - 游戏进度同样只存本机，清浏览器数据即清空。
 
 ## 致谢
