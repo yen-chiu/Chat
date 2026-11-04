@@ -5,7 +5,7 @@
 一个小型「聊天站」，也是 [Wendell 的博客](https://yenchiu.com) 的子站。现在它不止能聊天：里面还装了一个对话式小游戏和一个自带模型的 AI 页。
 
 <p>
-  <a href="https://chat.wendell.cloud/"><img src="https://img.shields.io/badge/Live-chat.wendell.cloud-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live" /></a>
+  <a href="https://yenchiu.com/chat/"><img src="https://img.shields.io/badge/Live-yenchiu.com%2Fchat-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live" /></a>
   <a href="https://yenchiu.com"><img src="https://img.shields.io/badge/Blog-yenchiu.com-a855f7?style=for-the-badge&logo=jekyll&logoColor=white" alt="Blog" /></a>
   <img src="https://img.shields.io/badge/Vue-2.x-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white" alt="Vue" />
   <img src="https://img.shields.io/badge/build-none-22c3aa?style=flat-square" alt="No build" />
