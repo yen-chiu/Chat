@@ -22,14 +22,14 @@
       "label": "46 道划痕",
       "kind": "in-season",
       "plant": [
-        "ch2"
+        "c2_book2"
       ],
       "payoff": [
         "ch3"
       ],
       "payoffSeason": "S1",
-      "status": "planned",
-      "note": "重置后第 47 道出现"
+      "status": "planted",
+      "note": "第二夜本子上的划痕"
     },
     {
       "id": "echo_late",
@@ -65,14 +65,14 @@
       "label": "05:00 的定时消息",
       "kind": "in-season",
       "plant": [
-        "ch2"
+        "c2_msg"
       ],
       "payoff": [
         "ch3"
       ],
       "payoffSeason": "S1",
-      "status": "planned",
-      "note": "时间戳与「春天」的矛盾"
+      "status": "planted",
+      "note": "05:00 的定时消息"
     },
     {
       "id": "submarine_book",
@@ -109,14 +109,14 @@
       "label": "第 47 条的笔迹",
       "kind": "cross-season",
       "plant": [
-        "ch2"
+        "c2_book3"
       ],
       "payoff": [
         "S2"
       ],
       "payoffSeason": "S2",
-      "status": "planned",
-      "note": "S2：是你的字"
+      "status": "planted",
+      "note": "第 47 条笔迹"
     },
     {
       "id": "period",
@@ -151,14 +151,15 @@
       "label": "12/23 的雨",
       "kind": "cross-season",
       "plant": [
-        "ch2"
+        "room_coat",
+        "c2_mem_date"
       ],
       "payoff": [
         "S2"
       ],
       "payoffSeason": "S2",
-      "status": "planned",
-      "note": "S2：站点日志里的日期"
+      "status": "planted",
+      "note": "12/23 的雨"
     },
     {
       "id": "seventh_night",
@@ -233,13 +234,13 @@
       "id": "frag_msg",
       "label": "05:00 的消息",
       "hint": "第二夜",
-      "status": "planned"
+      "status": "live"
     },
     {
       "id": "frag_scratch",
       "label": "第 47 道划痕",
       "hint": "第二夜",
-      "status": "planned"
+      "status": "live"
     },
     {
       "id": "frag_period",

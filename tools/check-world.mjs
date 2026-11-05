@@ -32,6 +32,9 @@ for (const [id, node] of Object.entries(nodes)) {
   if (node.end && !story.endings[node.end]) {
     errors.push(`${id}.end：结局「${node.end}」不存在`);
   }
+  if (node.end && story.endings[node.end] && story.endings[node.end].next) {
+    target(story.endings[node.end].next, id + '.end.next');
+  }
   const hasExit =
     node.end ||
     node.next ||
@@ -52,6 +55,9 @@ while (queue.length) {
   if (node.next) queue.push(node.next);
   (node.choices || []).forEach((c) => queue.push(c.goto));
   (node.branch || []).forEach((b) => queue.push(b.goto));
+  if (node.end && story.endings[node.end] && story.endings[node.end].next) {
+    queue.push(story.endings[node.end].next);
+  }
 }
 const orphans = [...ids].filter((id) => !reachable.has(id));
 if (orphans.length) errors.push(`不可达节点：${orphans.join(', ')}`);

@@ -73,6 +73,8 @@ for (const { file, data } of chapters) {
   }
 }
 
+world.meta.endingCount = Object.keys(world.endings).length;
+
 const seedData = fs.existsSync(SEEDS) ? JSON.parse(fs.readFileSync(SEEDS, 'utf8')) : null;
 if (seedData && seedData.fragments) world.meta.fragments = seedData.fragments;
 
