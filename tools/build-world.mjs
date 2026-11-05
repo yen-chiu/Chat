@@ -10,9 +10,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const ROOT = 'assets/stories/nianzhen';
+const ROOT = process.argv[2] || 'assets/stories/nianzhen';
 const SRC = path.join(ROOT, 'src');
-const OUT = path.join(ROOT, 'nianzhen.json');
+const OUT = path.join(ROOT, path.basename(ROOT) + '.json');
 const SEEDS = path.join(ROOT, 'seeds.json');
 
 const files = fs

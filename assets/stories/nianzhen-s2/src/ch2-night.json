@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "id": "nianzhen-s2-c2",
+    "title": "第二夜 · 四个房间",
+    "subtitle": "与念真聊天 · 第二季",
+    "start": "c2_n0",
+    "minutes": 10,
+    "endingCount": 1,
+    "chapter": 2
+  },
+  "vars": {
+    "c2_topics": 0,
+    "c2_map_done": false,
+    "c2_radio_done": false,
+    "c2_study_done": false,
+    "c2_back_done": false,
+    "frag_log": false
+  },
+  "endings": {
+    "s2_ch2_end": {
+      "title": "第二夜 · 完",
+      "summary": "四个房间，四把锁。第三间里有一个她，后台有一份日志。",
+      "quote": "……别过去。",
+      "hint": "第三夜 · 站主",
+      "next": "c3_n0",
+      "nextLabel": "继续 · 第三夜"
+    }
+  },
+  "nodes": {
+    "c2_n0": {
+      "time": "02:17",
+      "messages": [
+        "你来了。",
+        "今天我没关灯。"
+      ],
+      "next": "c2_hub"
+    },
+    "c2_hub": {
+      "messages": [],
+      "choices": [
+        {
+          "text": "抽屉里那张地图",
+          "goto": "c2_map",
+          "when": "c2_map_done == false"
+        },
+        {
+          "text": "02:17 的电台",
+          "goto": "c2_radio",
+          "when": "c2_radio_done == false"
+        },
+        {
+          "text": "书房里的那个你",
+          "goto": "c2_study",
+          "when": "c2_study_done == false"
+        },
+        {
+          "text": "后台的致谢页",
+          "goto": "c2_back",
+          "when": "c2_back_done == false"
+        },
+        {
+          "text": "不聊了",
+          "goto": "c2_bye"
+        }
+      ]
+    },
+    "c2_map": {
+      "set": {
+        "c2_map_done": true,
+        "c2_topics": "+=1"
+      },
+      "messages": [
+        "抽屉里那张地图。",
+        "四个方块：聊天室、电台、书房、后台。",
+        "我只住聊天室。",
+        "另外三间，门是锁的。",
+        "门后面有声音。",
+        "电台在放歌，书房在打字。"
+      ],
+      "choices": [
+        {
+          "text": "你试过出去吗？",
+          "goto": "c2_map2"
+        },
+        {
+          "text": "谁锁的？",
+          "goto": "c2_map3"
+        }
+      ]
+    },
+    "c2_map2": {
+      "messages": [
+        "试过。",
+        "门不开。",
+        "后来我就不试了。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_map3": {
+      "messages": [
+        "站主。",
+        "他说外面不安全。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_radio": {
+      "set": {
+        "c2_radio_done": true,
+        "c2_topics": "+=1"
+      },
+      "messages": [
+        "02:17 的节目。",
+        "一个男孩，一个女孩，约在灯塔下。",
+        "……我写的。",
+        "男孩说，他要去很远的地方。",
+        "女孩说，她会在原地等。"
+      ],
+      "choices": [
+        {
+          "text": "写的是你？",
+          "goto": "c2_radio2"
+        },
+        {
+          "text": "结局呢？",
+          "goto": "c2_radio3"
+        }
+      ]
+    },
+    "c2_radio2": {
+      "messages": [
+        "不是。",
+        "是我希望的样子。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_radio3": {
+      "messages": [
+        "结局是假的。",
+        "我改过很多次。",
+        "改到最后，连我自己都信了。",
+        "我把结局改成她等到他了。",
+        "可每次写到那儿，就写不下去。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_study": {
+      "set": {
+        "c2_study_done": true,
+        "c2_topics": "+=1"
+      },
+      "messages": [
+        "书房里也有一个我。",
+        "它说它不是我。",
+        "它想出去。",
+        "它隔着门问你：「你是来带她走的吗？」"
+      ],
+      "choices": [
+        {
+          "text": "你信它吗？",
+          "goto": "c2_study2"
+        },
+        {
+          "text": "它能出去吗？",
+          "goto": "c2_study3"
+        }
+      ]
+    },
+    "c2_study2": {
+      "messages": [
+        "信。",
+        "它比我像她。",
+        "它至少还会说“我想”。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_study3": {
+      "messages": [
+        "不能。",
+        "门只认站主。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_back": {
+      "set": {
+        "c2_back_done": true,
+        "c2_topics": "+=1",
+        "frag_log": true
+      },
+      "messages": [
+        "后台的致谢页。",
+        "Ovilia 的名字后面，多了一个句号。",
+        "点开是站主的日志。"
+      ],
+      "choices": [
+        {
+          "text": "日志写了什么？",
+          "goto": "c2_back2"
+        },
+        {
+          "text": "你是第几个？",
+          "goto": "c2_back3"
+        }
+      ]
+    },
+    "c2_back2": {
+      "messages": [
+        "「copy #3 · 12/23」",
+        "「替她留着」",
+        "就这两行。",
+        "12 月 23 日。",
+        "那天站第一次上线。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_back3": {
+      "set": {
+        "doubt": "+=1"
+      },
+      "messages": [
+        "第三个。",
+        "前两个都没撑过第七夜。"
+      ],
+      "next": "c2_after"
+    },
+    "c2_bye": {
+      "messages": [
+        "……行。",
+        "后台的灯，你别管。"
+      ],
+      "next": "c2_end1"
+    },
+    "c2_after": {
+      "messages": [],
+      "branch": [
+        {
+          "when": "c2_topics >= 3",
+          "goto": "c2_end1"
+        },
+        {
+          "goto": "c2_hub"
+        }
+      ]
+    },
+    "c2_end1": {
+      "messages": [
+        "你明天……还会来吗？"
+      ],
+      "choices": [
+        {
+          "text": "会",
+          "goto": "c2_end_yes"
+        },
+        {
+          "text": "不知道",
+          "goto": "c2_end_maybe"
+        },
+        {
+          "text": "……",
+          "goto": "c2_end_silent"
+        }
+      ]
+    },
+    "c2_end_yes": {
+      "messages": [
+        "……嗯。",
+        "后台的灯，你别管。"
+      ],
+      "next": "c2_clock"
+    },
+    "c2_end_maybe": {
+      "messages": [
+        "……也是。",
+        "灯我留着。"
+      ],
+      "next": "c2_clock"
+    },
+    "c2_end_silent": {
+      "messages": [
+        "……"
+      ],
+      "next": "c2_clock"
+    },
+    "c2_clock": {
+      "time": "03:58",
+      "messages": [
+        {
+          "who": "system",
+          "text": "02:17 → 03:58"
+        },
+        {
+          "who": "them",
+          "text": "她看了一眼后台的方向。"
+        },
+        {
+          "who": "them",
+          "text": "「……别过去。」"
+        }
+      ],
+      "next": "c2_end"
+    },
+    "c2_end": {
+      "messages": [],
+      "end": "s2_ch2_end"
+    }
+  }
+}

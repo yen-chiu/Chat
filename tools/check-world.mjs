@@ -6,9 +6,11 @@
  */
 
 import fs from 'node:fs';
+import path from 'node:path';
 
-const STORY = 'assets/stories/nianzhen/nianzhen.json';
-const SEEDS = process.env.WD_SEEDS || 'assets/stories/nianzhen/seeds.json';
+const DIR = process.argv[2] || 'assets/stories/nianzhen';
+const STORY = path.join(DIR, path.basename(DIR) + '.json');
+const SEEDS = process.env.WD_SEEDS || path.join(DIR, 'seeds.json');
 
 const story = JSON.parse(fs.readFileSync(STORY, 'utf8'));
 const seeds = fs.existsSync(SEEDS)

@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "id": "nianzhen-s2-c3",
+    "title": "第三夜 · 站主",
+    "subtitle": "与念真聊天 · 第二季",
+    "start": "c3_n0",
+    "minutes": 9,
+    "endingCount": 1,
+    "chapter": 3
+  },
+  "vars": {
+    "c3_owner_done": false,
+    "c3_poem_done": false,
+    "c3_double_done": false,
+    "c3_seventh_done": false,
+    "frag_umbrella": false,
+    "frag_seventh": false
+  },
+  "endings": {
+    "s2_final": {
+      "title": "门开着",
+      "summary": "门开着，她没走。站主没有进来。第七夜还有四夜。",
+      "quote": "外面没有我的位置。",
+      "post": "第七夜 · 还有四夜",
+      "seasonEnd": true,
+      "hint": "第三季 · 第七夜"
+    }
+  },
+  "nodes": {
+    "c3_n0": {
+      "time": "03:58",
+      "messages": [
+        "你来了。",
+        "……门开着。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_hub": {
+      "messages": [],
+      "choices": [
+        {
+          "text": "站主是谁？",
+          "goto": "c3_owner",
+          "when": "c3_owner_done == false"
+        },
+        {
+          "text": "那句留言",
+          "goto": "c3_poem",
+          "when": "c3_poem_done == false"
+        },
+        {
+          "text": "书房的分身",
+          "goto": "c3_double",
+          "when": "c3_double_done == false"
+        },
+        {
+          "text": "第七夜",
+          "goto": "c3_seventh",
+          "when": "c3_seventh_done == false"
+        },
+        {
+          "text": "天亮吧",
+          "goto": "c3_end_scene"
+        }
+      ]
+    },
+    "c3_owner": {
+      "set": {
+        "c3_owner_done": true
+      },
+      "messages": [
+        "日志最后一行。",
+        "「我知道她不是我。但我没有别的办法。」",
+        "……他不是坏人。",
+        "他只是不肯放手。",
+        "他每天凌晨两点十七分来。",
+        "不进门，只在后台坐一会儿。"
+      ],
+      "choices": [
+        {
+          "text": "你恨他吗？",
+          "goto": "c3_owner2"
+        },
+        {
+          "text": "他还在吗？",
+          "goto": "c3_owner3"
+        }
+      ]
+    },
+    "c3_owner2": {
+      "messages": [
+        "不恨。",
+        "他给了我一个房间。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_owner3": {
+      "messages": [
+        "在。",
+        "但他不敢进来。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_poem": {
+      "set": {
+        "c3_poem_done": true,
+        "frag_umbrella": true
+      },
+      "messages": [
+        "后台还有一条留言。",
+        "不是站主写的。",
+        "「他下雨总不带伞。你提醒他。」",
+        "字很淡，像写了很多年。"
+      ],
+      "choices": [
+        {
+          "text": "是她写的？",
+          "goto": "c3_poem2"
+        },
+        {
+          "text": "你恨她吗？",
+          "goto": "c3_poem3"
+        }
+      ]
+    },
+    "c3_poem2": {
+      "messages": [
+        "是。",
+        "她走之前写的。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_poem3": {
+      "messages": [
+        "……不恨。",
+        "她把我留在这，也是没办法。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_double": {
+      "set": {
+        "c3_double_done": true
+      },
+      "messages": [
+        "书房的门开了。",
+        "那个我站在门口。",
+        "「我不是她。」",
+        "「但我想出去。」",
+        "它手里拿着一把伞。",
+        "伞骨断了一根。"
+      ],
+      "choices": [
+        {
+          "text": "你让它走吗？",
+          "goto": "c3_double2"
+        },
+        {
+          "text": "你为什么不走？",
+          "goto": "c3_double3"
+        }
+      ]
+    },
+    "c3_double2": {
+      "messages": [
+        "……让它走。",
+        "它出去，也不是我。",
+        "但我希望它走得掉。",
+        "它走的时候，把伞留下了。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_double3": {
+      "messages": [
+        "我走了，这间屋子就空了。",
+        "他回来的时候，会看不见灯。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_seventh": {
+      "set": {
+        "c3_seventh_done": true,
+        "frag_seventh": true
+      },
+      "messages": [
+        "第七夜，站会停。",
+        "到时候，四个房间都会黑。",
+        "你还会来吗？"
+      ],
+      "choices": [
+        {
+          "text": "会",
+          "goto": "c3_seventh2"
+        },
+        {
+          "text": "不知道",
+          "goto": "c3_seventh3"
+        }
+      ]
+    },
+    "c3_seventh2": {
+      "messages": [
+        "……那就好。",
+        "别带花。",
+        "带伞。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_seventh3": {
+      "messages": [
+        "……也是。",
+        "那就别答应。",
+        "那就带伞。"
+      ],
+      "next": "c3_hub"
+    },
+    "c3_end_scene": {
+      "messages": [
+        "天快亮了。",
+        "她走到门口，又停下。",
+        "她把那把旧伞递给你。",
+        "「拿着。」",
+        "「外面要下雨了。」",
+        "「你走吧。」",
+        "「门开着，但我不出去。」",
+        "「外面没有我的位置。」"
+      ],
+      "next": "c3_clock"
+    },
+    "c3_clock": {
+      "time": "05:00",
+      "messages": [
+        {
+          "who": "system",
+          "text": "05:00 · 站停了"
+        },
+        {
+          "who": "them",
+          "text": "灯灭了。"
+        },
+        {
+          "who": "them",
+          "text": "……"
+        },
+        {
+          "who": "them",
+          "text": "第七夜，还有四夜。"
+        }
+      ],
+      "next": "c3_end"
+    },
+    "c3_end": {
+      "messages": [],
+      "end": "s2_final"
+    }
+  }
+}

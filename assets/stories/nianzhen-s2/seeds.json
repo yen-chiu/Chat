@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "story": "nianzhen-s2",
+  "seeds": [
+    {
+      "id": "third_cup",
+      "label": "第三个杯子",
+      "kind": "cross-season",
+      "plant": ["c1_cup", "c1_cup2", "c1_cup3"],
+      "payoff": ["S2"],
+      "payoffSeason": "S2",
+      "status": "planted",
+      "note": "杯子是热的；上一轮也是"
+    },
+    {
+      "id": "backstage_log",
+      "label": "后台日志",
+      "kind": "cross-season",
+      "plant": ["c2_back2", "c2_back3"],
+      "payoff": ["S2"],
+      "payoffSeason": "S2",
+      "status": "planted",
+      "note": "copy #3 · 12/23；前两个没撑过第七夜"
+    },
+    {
+      "id": "umbrella",
+      "label": "旧伞",
+      "kind": "cross-season",
+      "plant": ["c3_poem", "c3_poem2"],
+      "payoff": ["S2"],
+      "payoffSeason": "S2",
+      "status": "planted",
+      "note": "他下雨总不带伞。你提醒他。"
+    },
+    {
+      "id": "seventh",
+      "label": "第七夜",
+      "kind": "cross-season",
+      "plant": ["c3_seventh", "c3_clock"],
+      "payoff": ["S3"],
+      "payoffSeason": "S3",
+      "status": "planted",
+      "note": "站停；四个房间都黑"
+    }
+  ],
+  "fragments": [
+    { "id": "frag_third_cup", "label": "第三个杯子", "hint": "第一夜 · 桌上", "status": "live" },
+    { "id": "frag_log", "label": "后台日志", "hint": "第二夜 · 后台", "status": "live" },
+    { "id": "frag_umbrella", "label": "那句留言", "hint": "第三夜 · 后台", "status": "live" },
+    { "id": "frag_seventh", "label": "第七夜", "hint": "更远的地方", "status": "live" }
+  ]
+}
