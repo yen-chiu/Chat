@@ -52,6 +52,7 @@ const chrome = spawn(
     '--disable-back-forward-cache',
     '--disable-features=BackForwardCache',
     '--hide-scrollbars',
+    '--no-proxy-server',
     '--disable-extensions',
     `--window-size=${width},${height}`,
     `--remote-debugging-port=${PORT}`,
