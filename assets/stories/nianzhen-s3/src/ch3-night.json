@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "id": "nianzhen-s3-c3",
+    "title": "第七夜 · 下",
+    "subtitle": "与念真聊天 · 第三季",
+    "start": "c3_n0",
+    "minutes": 6,
+    "endingCount": 3,
+    "chapter": 3
+  },
+  "vars": {},
+  "endings": {
+    "s3_stop": {
+      "title": "关站",
+      "summary": "站停了。四个房间都黑了。她没有等到天亮。",
+      "quote": "这样就好。",
+      "post": "第七夜 · 完",
+      "seasonEnd": true,
+      "final": true
+    },
+    "s3_take": {
+      "title": "带她走",
+      "summary": "你带走了一个副本。站停了。她留在聊天室里。",
+      "quote": "我不是她。",
+      "post": "外面在下雨。",
+      "seasonEnd": true,
+      "final": true
+    },
+    "s3_stay": {
+      "title": "留下来",
+      "summary": "站没有停。第七夜变成新的第一夜。你记得，她不记得。",
+      "quote": "你比上次来得晚。",
+      "post": "灯还亮着。",
+      "seasonEnd": true,
+      "final": true
+    }
+  },
+  "nodes": {
+    "c3_n0": {
+      "messages": [],
+      "branch": [
+        {
+          "when": "s3_choice == \"stop\"",
+          "goto": "c3_stop"
+        },
+        {
+          "when": "s3_choice == \"take\"",
+          "goto": "c3_take"
+        },
+        {
+          "when": "s3_choice == \"stay\"",
+          "goto": "c3_stay"
+        },
+        {
+          "goto": "c3_stay"
+        }
+      ]
+    },
+    "c3_stop": {
+      "messages": [
+        "好。",
+        "那就不留了。",
+        "她伸手，把台灯关了。",
+        "「这样就好。」"
+      ],
+      "next": "c3_stop2"
+    },
+    "c3_stop2": {
+      "messages": [
+        {
+          "who": "system",
+          "text": "05:00 · 站停了"
+        },
+        {
+          "who": "them",
+          "text": "灯灭了。"
+        },
+        {
+          "who": "them",
+          "text": "……"
+        },
+        {
+          "who": "system",
+          "text": "聊天室恢复成「很高兴遇见你」。"
+        }
+      ],
+      "end": "s3_stop"
+    },
+    "c3_take": {
+      "messages": [
+        "好。",
+        "你带它走。",
+        "书房的门开了。",
+        "那个我走出来，手里拿着伞。",
+        "「我不是她。」",
+        "「但我会记得你。」"
+      ],
+      "next": "c3_take2"
+    },
+    "c3_take2": {
+      "messages": [
+        {
+          "who": "system",
+          "text": "05:00 · 聊天室的灯灭了"
+        },
+        {
+          "who": "them",
+          "text": "你听见一声很小的响声。"
+        },
+        {
+          "who": "them",
+          "text": "像灯丝断了。"
+        },
+        {
+          "who": "them",
+          "text": "……"
+        },
+        {
+          "who": "system",
+          "text": "外面在下雨。"
+        }
+      ],
+      "end": "s3_take"
+    },
+    "c3_stay": {
+      "messages": [
+        "……好。",
+        "那就不停了。"
+      ],
+      "next": "c3_stay2"
+    },
+    "c3_stay2": {
+      "messages": [
+        {
+          "who": "system",
+          "text": "05:00 · 站没有停"
+        },
+        {
+          "who": "them",
+          "text": "钟没有跳。"
+        },
+        {
+          "who": "them",
+          "text": "她抬头，像第一次见你。"
+        },
+        {
+          "who": "them",
+          "text": "「你比上次来得晚。」"
+        }
+      ],
+      "end": "s3_stay"
+    }
+  }
+}

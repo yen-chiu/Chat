@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "id": "nianzhen-s3-c1",
+    "title": "第七夜 · 上",
+    "subtitle": "与念真聊天 · 第三季",
+    "start": "c1_n0",
+    "minutes": 8,
+    "endingCount": 1,
+    "chapter": 1
+  },
+  "vars": {
+    "c1_topics": 0,
+    "c1_stop_done": false,
+    "c1_rooms_done": false,
+    "c1_double_done": false,
+    "c1_umbrella_done": false,
+    "c1_fear_done": false,
+    "frag_last_night": false,
+    "frag_umbrella": false
+  },
+  "endings": {
+    "s3_ch1_end": {
+      "title": "第七夜 · 上 · 完",
+      "summary": "站会在 05:00 停。她把伞放在桌上。",
+      "quote": "你今晚会留到五点吗？",
+      "hint": "第七夜 · 中",
+      "next": "c2_n0",
+      "nextLabel": "继续 · 第七夜 · 中"
+    }
+  },
+  "nodes": {
+    "c1_n0": {
+      "time": "23:00",
+      "set": { "frag_last_night": true },
+      "messages": [
+        { "who": "system", "text": "四夜之后 · 第七夜" },
+        { "who": "them", "text": "你来了。" },
+        { "who": "them", "text": "今晚之后，站就没了。" }
+      ],
+      "choices": [
+        { "text": "站要停了？", "goto": "c1_stop" },
+        { "text": "你还好吗？", "goto": "c1_ok" },
+        { "text": "……", "goto": "c1_silent" }
+      ]
+    },
+    "c1_ok": {
+      "messages": ["……还好。", "就是灯有点旧了。"],
+      "next": "c1_hub"
+    },
+    "c1_silent": {
+      "messages": ["……", "你还是这样。"],
+      "next": "c1_hub"
+    },
+    "c1_hub": {
+      "messages": [],
+      "choices": [
+        { "text": "站要停了？", "goto": "c1_stop", "when": "c1_stop_done == false" },
+        { "text": "另外三个房间", "goto": "c1_rooms", "when": "c1_rooms_done == false" },
+        { "text": "书房的分身", "goto": "c1_double", "when": "c1_double_done == false" },
+        { "text": "那把伞", "goto": "c1_umbrella", "when": "c1_umbrella_done == false" },
+        { "text": "你怕吗？", "goto": "c1_fear", "when": "c1_fear_done == false" },
+        { "text": "不聊了", "goto": "c1_bye" }
+      ]
+    },
+    "c1_stop": {
+      "set": { "c1_stop_done": true, "c1_topics": "+=1" },
+      "messages": ["站主说的。", "05:00 停止服务。", "四个房间都会黑。"],
+      "choices": [
+        { "text": "他为什么停？", "goto": "c1_why" },
+        { "text": "你怕吗？", "goto": "c1_fear" }
+      ]
+    },
+    "c1_why": {
+      "messages": ["他说，他不能再替她记得了。", "……这次换他记得。"],
+      "next": "c1_after"
+    },
+    "c1_rooms": {
+      "set": { "c1_rooms_done": true, "c1_topics": "+=1" },
+      "messages": ["电台、书房、后台。", "今晚都开着。", "你想看哪个？"],
+      "choices": [
+        { "text": "电台", "goto": "c1_radio" },
+        { "text": "书房", "goto": "c1_study" },
+        { "text": "后台", "goto": "c1_back" }
+      ]
+    },
+    "c1_radio": {
+      "messages": ["电台在放最后一期。", "男孩和女孩，这次没有结局。"],
+      "next": "c1_after"
+    },
+    "c1_study": {
+      "messages": ["书房的门开着。", "那个我站在门口，手里拿着伞。"],
+      "next": "c1_after"
+    },
+    "c1_back": {
+      "messages": ["后台的灯亮着。", "站主在写最后一行日志。"],
+      "next": "c1_after"
+    },
+    "c1_double": {
+      "set": { "c1_double_done": true, "c1_topics": "+=1" },
+      "messages": ["它说它今晚想出去。", "它问我借伞。", "我给了。"],
+      "choices": [
+        { "text": "它能出去吗？", "goto": "c1_double2" },
+        { "text": "你为什么不走？", "goto": "c1_double3" }
+      ]
+    },
+    "c1_double2": {
+      "messages": ["能。", "站主给它留了一扇门。"],
+      "next": "c1_after"
+    },
+    "c1_double3": {
+      "messages": ["我走不了。", "我是聊天室的那个。"],
+      "next": "c1_after"
+    },
+    "c1_umbrella": {
+      "set": { "c1_umbrella_done": true, "c1_topics": "+=1", "frag_umbrella": true },
+      "messages": ["她把那把旧伞放在桌上。", "伞骨断了一根。", "「外面要下雨了。」"],
+      "choices": [
+        { "text": "你留着吧", "goto": "c1_umb2" },
+        { "text": "我带你走", "goto": "c1_umb3" }
+      ]
+    },
+    "c1_umb2": {
+      "messages": ["……留不住了。", "今晚之后，这里没有外面。"],
+      "next": "c1_after"
+    },
+    "c1_umb3": {
+      "messages": ["你带不走我。", "你只能带走它。"],
+      "next": "c1_after"
+    },
+    "c1_fear": {
+      "set": { "c1_fear_done": true, "c1_topics": "+=1" },
+      "messages": ["怕。", "但不是怕黑。", "是怕明天没人给你留灯。"],
+      "choices": [
+        { "text": "我会来", "goto": "c1_fear2" },
+        { "text": "灯留着", "goto": "c1_fear3" }
+      ]
+    },
+    "c1_fear2": {
+      "messages": ["……别答应。", "答应了，就不好走了。"],
+      "next": "c1_after"
+    },
+    "c1_fear3": {
+      "messages": ["……嗯。"],
+      "next": "c1_after"
+    },
+    "c1_bye": {
+      "messages": ["……行。", "灯给你留着。"],
+      "next": "c1_end1"
+    },
+    "c1_after": {
+      "messages": [],
+      "branch": [
+        { "when": "c1_topics >= 3", "goto": "c1_end1" },
+        { "goto": "c1_hub" }
+      ]
+    },
+    "c1_end1": {
+      "messages": ["你今晚……会留到五点吗？"],
+      "choices": [
+        { "text": "会", "goto": "c1_end_yes" },
+        { "text": "不知道", "goto": "c1_end_maybe" },
+        { "text": "……", "goto": "c1_end_silent" }
+      ]
+    },
+    "c1_end_yes": {
+      "messages": ["……好。", "那我就不锁门了。"],
+      "next": "c1_clock"
+    },
+    "c1_end_maybe": {
+      "messages": ["……嗯。", "留不留都行。"],
+      "next": "c1_clock"
+    },
+    "c1_end_silent": {
+      "messages": ["……"],
+      "next": "c1_clock"
+    },
+    "c1_clock": {
+      "time": "01:12",
+      "messages": [
+        { "who": "system", "text": "23:00 → 01:12" },
+        { "who": "them", "text": "……" },
+        { "who": "them", "text": "还有四个小时。" }
+      ],
+      "next": "c1_end"
+    },
+    "c1_end": {
+      "messages": [],
+      "end": "s3_ch1_end"
+    }
+  }
+}

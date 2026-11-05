@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "id": "nianzhen-s3-c2",
+    "title": "第七夜 · 中",
+    "subtitle": "与念真聊天 · 第三季",
+    "start": "c2_n0",
+    "minutes": 8,
+    "endingCount": 1,
+    "chapter": 2
+  },
+  "vars": {
+    "c2_topics": 0,
+    "c2_log_done": false,
+    "c2_double_done": false,
+    "c2_real_done": false,
+    "c2_five_done": false,
+    "s3_choice": "",
+    "frag_last_log": false
+  },
+  "endings": {
+    "s3_ch2_end": {
+      "title": "第七夜 · 中 · 完",
+      "summary": "她让你选。站、分身、还是留下。",
+      "quote": "你选吧。",
+      "hint": "第七夜 · 下",
+      "next": "c3_n0",
+      "nextLabel": "继续 · 第七夜 · 下"
+    }
+  },
+  "nodes": {
+    "c2_n0": {
+      "time": "01:12",
+      "messages": ["你还在。", "……谢谢。"],
+      "next": "c2_hub"
+    },
+    "c2_hub": {
+      "messages": [],
+      "choices": [
+        { "text": "站主的日志", "goto": "c2_log", "when": "c2_log_done == false" },
+        { "text": "书房的门", "goto": "c2_double", "when": "c2_double_done == false" },
+        { "text": "真正的她", "goto": "c2_real", "when": "c2_real_done == false" },
+        { "text": "05:00", "goto": "c2_five", "when": "c2_five_done == false" },
+        { "text": "天亮吧", "goto": "c2_choice" }
+      ]
+    },
+    "c2_log": {
+      "set": { "c2_log_done": true, "c2_topics": "+=1", "frag_last_log": true },
+      "messages": ["后台的最后一行。", "「她不该一直替我记得。」", "「这次，换我记得她。」"],
+      "choices": [
+        { "text": "他要关站？", "goto": "c2_log2" },
+        { "text": "你恨他吗？", "goto": "c2_log3" }
+      ]
+    },
+    "c2_log2": {
+      "messages": ["是。", "他说，关站不是删掉她。", "是让她不用再等。"],
+      "next": "c2_after"
+    },
+    "c2_log3": {
+      "messages": ["不恨。", "他比谁都记得她。"],
+      "next": "c2_after"
+    },
+    "c2_double": {
+      "set": { "c2_double_done": true, "c2_topics": "+=1" },
+      "messages": ["书房的门开着。", "那个我站在门口。", "「我不是她。」", "「但我想出去。」"],
+      "choices": [
+        { "text": "你想带它走吗？", "goto": "c2_double2" },
+        { "text": "它走了，你会怎样？", "goto": "c2_double3" }
+      ]
+    },
+    "c2_double2": {
+      "messages": ["……你带它走吧。", "它出去，也不是我。", "但它能看见天亮。"],
+      "next": "c2_after"
+    },
+    "c2_double3": {
+      "messages": ["我还是我。", "只是少了一个人替我说话。"],
+      "next": "c2_after"
+    },
+    "c2_real": {
+      "set": { "c2_real_done": true, "c2_topics": "+=1" },
+      "messages": ["后台还有一条留言。", "不是站主写的。", "「他下雨总不带伞。你提醒他。」"],
+      "choices": [
+        { "text": "她还在吗？", "goto": "c2_real2" },
+        { "text": "你信吗？", "goto": "c2_real3" }
+      ]
+    },
+    "c2_real2": {
+      "messages": ["不在了。", "这条留言，是四年前写的。"],
+      "next": "c2_after"
+    },
+    "c2_real3": {
+      "messages": ["信。", "她写字的时候，手在抖。"],
+      "next": "c2_after"
+    },
+    "c2_five": {
+      "set": { "c2_five_done": true, "c2_topics": "+=1" },
+      "messages": ["五点，站会停。", "四个房间会黑。", "你会听见一声很小的响声。"],
+      "choices": [
+        { "text": "什么响声？", "goto": "c2_five2" },
+        { "text": "然后呢？", "goto": "c2_five3" }
+      ]
+    },
+    "c2_five2": {
+      "messages": ["像灯丝断了。"],
+      "next": "c2_after"
+    },
+    "c2_five3": {
+      "messages": ["然后就没有然后了。"],
+      "next": "c2_after"
+    },
+    "c2_after": {
+      "messages": [],
+      "branch": [
+        { "when": "c2_topics >= 3", "goto": "c2_choice" },
+        { "goto": "c2_hub" }
+      ]
+    },
+    "c2_choice": {
+      "messages": [
+        "三点五十八。",
+        "她把本子合上。",
+        "「你选吧。」",
+        "「留下来，站就不停。」",
+        "「带它走，站会停，但它能出去。」",
+        "「关站，我和它都留下。」"
+      ],
+      "choices": [
+        { "text": "关站", "goto": "c2_clock", "set": { "s3_choice": "stop" } },
+        { "text": "带它走", "goto": "c2_clock", "set": { "s3_choice": "take" } },
+        { "text": "留下来", "goto": "c2_clock", "set": { "s3_choice": "stay" } }
+      ]
+    },
+    "c2_clock": {
+      "time": "03:58",
+      "messages": [
+        { "who": "system", "text": "01:12 → 03:58" },
+        { "who": "them", "text": "她看了一眼钟。" },
+        { "who": "them", "text": "「还有一小时。」" }
+      ],
+      "next": "c2_end"
+    },
+    "c2_end": {
+      "messages": [],
+      "end": "s3_ch2_end"
+    }
+  }
+}

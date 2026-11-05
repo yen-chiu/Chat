@@ -1285,7 +1285,11 @@
     }
 
     if (repeat) {
-      lines.push('', '【这一轮】对方这句话和前面几乎一样，你已经答过。先点一句「刚说过」或「又问一遍？」，只补一句新的，或者反问回去；不要重新展开答案。');
+      lines.push(
+        '',
+        '【这一轮】这句话和前面某句很像，可能就是又问了一遍。真是同一件事，点一句「刚说过」或「又问一遍？」就够，别再展开一遍；' +
+          '要是它带了新的条件、新的对象，或者只是接着往下问，就当新问题正常答，别硬说人家重复。'
+      );
     }
 
     if (config.tools) {
@@ -1740,10 +1744,11 @@
 
   function findRepeat(chat, query) {
     if (!chat || !chat.messages || chat.messages.length < 3) return null;
-    var cur = normalizeAsk(query);
+    var raw = String(query || '');
+    var cur = normalizeAsk(raw);
     if (cur.length < 4) return null;
     // 明确让对方再讲一遍的，不算重复
-    if (/再说|再讲|重复|没听清|没记住|忘了|再来一遍/.test(String(query || ''))) return null;
+    if (/再说|再讲|重复|没听清|没记住|忘了|再来一遍/.test(raw)) return null;
     if (/^(在吗|在不在|你好|嗨|hi|hello|早|早安|晚安|哈喽)/i.test(cur)) return null;
 
     var msgs = chat.messages;
@@ -1754,13 +1759,20 @@
         break;
       }
     }
-    for (var j = lastUser - 1; j >= 0; j--) {
+
+    // 只看最近六句：隔了很多轮再换个说法提起，本来就不该算「又问一遍」
+    var seen = 0;
+    for (var j = lastUser - 1; j >= 0 && seen < 6; j--) {
       var m = msgs[j];
       if (!m || m.role !== 'user') continue;
+      seen++;
       var prev = normalizeAsk(m.content);
       if (prev.length < 4) continue;
       if (prev === cur) return m;
-      if (prev.length >= 6 && cur.length >= 6 && diceCoefficient(prev, cur) >= 0.8) return m;
+      // 两句长短差得多，多半是追问或补了条件，不能当重复
+      var ratio = Math.min(prev.length, cur.length) / Math.max(prev.length, cur.length);
+      if (ratio < 0.85) continue;
+      if (prev.length >= 6 && cur.length >= 6 && diceCoefficient(prev, cur) >= 0.9) return m;
     }
     return null;
   }
@@ -1783,7 +1795,20 @@
       }
     });
 
-    return list.concat(extra || []);
+    var out = list.concat(extra || []);
+
+    // 当前这句在发请求前已经写进会话历史了，调用方又补了一条：同一句连着出现两次，
+    // 模型会当成「对方重复发了一遍」。只留一条。
+    var last = out.length - 1;
+    if (last > 0) {
+      var a = out[last];
+      var b = out[last - 1];
+      if (a.role === 'user' && b.role === 'user' && String(a.content) === String(b.content)) {
+        out.pop();
+      }
+    }
+
+    return out;
   }
 
   async function speak(userText) {

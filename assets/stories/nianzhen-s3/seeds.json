@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "story": "nianzhen-s3",
+  "seeds": [
+    {
+      "id": "last_night",
+      "label": "第七夜",
+      "kind": "cross-season",
+      "plant": ["c1_n0"],
+      "payoff": ["S3"],
+      "payoffSeason": "S3",
+      "status": "planted",
+      "note": "四夜之后，站会在 05:00 停"
+    },
+    {
+      "id": "umbrella",
+      "label": "旧伞",
+      "kind": "cross-season",
+      "plant": ["c1_umbrella", "c2_real"],
+      "payoff": ["S3"],
+      "payoffSeason": "S3",
+      "status": "planted",
+      "note": "她递给你；外面要下雨了"
+    },
+    {
+      "id": "last_log",
+      "label": "最后一行日志",
+      "kind": "cross-season",
+      "plant": ["c2_log"],
+      "payoff": ["S3"],
+      "payoffSeason": "S3",
+      "status": "planted",
+      "note": "这次换我记得她"
+    }
+  ],
+  "fragments": [
+    { "id": "frag_last_night", "label": "第七夜", "hint": "23:00 · 开场", "status": "live" },
+    { "id": "frag_umbrella", "label": "那把旧伞", "hint": "第七夜 · 桌上", "status": "live" },
+    { "id": "frag_last_log", "label": "最后一行日志", "hint": "第七夜 · 后台", "status": "live" }
+  ]
+}
