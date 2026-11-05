@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 
-const FILES = ['css/shell.css', 'css/ambient.css', 'js/shell.js', 'js/ambient.js'];
+const FILES = ['css/shell.css', 'css/ambient.css', 'js/shell.js', 'js/ambient.js', 'js/ai.js'];
 const PAGES = ['index.html', 'ai.html', 'game.html', 'credits.html'];
 
 const hash = crypto.createHash('sha1');
