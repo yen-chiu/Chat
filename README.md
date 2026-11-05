@@ -4,6 +4,8 @@
 
 一个小型「聊天站」，也是 [Wendell 的博客](https://yenchiu.com) 的子站。现在它不止能聊天：里面还装了一个对话式小游戏和一个自带模型的 AI 页。
 
+> **以主站为准**：主要更新都在主站网站上（[yenchiu.com/chat](https://yenchiu.com/chat/)，正式部署的那份在 `yen-chiu.github.io` 仓库的 `chat/` 目录），这个仓库只是一份副本。
+
 <p>
   <a href="https://yenchiu.com/chat/"><img src="https://img.shields.io/badge/Live-yenchiu.com%2Fchat-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live" /></a>
   <a href="https://yenchiu.com"><img src="https://img.shields.io/badge/Blog-yenchiu.com-a855f7?style=for-the-badge&logo=jekyll&logoColor=white" alt="Blog" /></a>
