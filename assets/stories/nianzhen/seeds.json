@@ -6,8 +6,13 @@
       "id": "cups",
       "label": "两只杯子",
       "kind": "in-season",
-      "plant": ["t_room", "room_cup"],
-      "payoff": ["ch3"],
+      "plant": [
+        "t_room",
+        "room_cup"
+      ],
+      "payoff": [
+        "ch3"
+      ],
       "payoffSeason": "S1",
       "status": "planted",
       "note": "第三夜她把另一只收进柜子"
@@ -16,8 +21,12 @@
       "id": "scratch46",
       "label": "46 道划痕",
       "kind": "in-season",
-      "plant": ["ch2"],
-      "payoff": ["ch3"],
+      "plant": [
+        "ch2"
+      ],
+      "payoff": [
+        "ch3"
+      ],
       "payoffSeason": "S1",
       "status": "planned",
       "note": "重置后第 47 道出现"
@@ -26,8 +35,12 @@
       "id": "echo_late",
       "label": "「你比上次来得晚」",
       "kind": "in-season",
-      "plant": ["n0"],
-      "payoff": ["ch3"],
+      "plant": [
+        "n0"
+      ],
+      "payoff": [
+        "ch3"
+      ],
       "payoffSeason": "S1",
       "status": "planted",
       "note": "结局 A 同一句"
@@ -36,8 +49,13 @@
       "id": "friend_phrase",
       "label": "「你很像我的一个朋友」",
       "kind": "in-season",
-      "plant": ["t_met", "met2"],
-      "payoff": ["ch3"],
+      "plant": [
+        "t_met",
+        "met2"
+      ],
+      "payoff": [
+        "ch3"
+      ],
       "payoffSeason": "S1",
       "status": "planted",
       "note": "第三夜「你不是他。但你可以是」"
@@ -46,8 +64,12 @@
       "id": "timed_message",
       "label": "05:00 的定时消息",
       "kind": "in-season",
-      "plant": ["ch2"],
-      "payoff": ["ch3"],
+      "plant": [
+        "ch2"
+      ],
+      "payoff": [
+        "ch3"
+      ],
       "payoffSeason": "S1",
       "status": "planned",
       "note": "时间戳与「春天」的矛盾"
@@ -56,8 +78,13 @@
       "id": "submarine_book",
       "label": "《夜晚的潜水艇》",
       "kind": "in-season",
-      "plant": ["t_books", "books2"],
-      "payoff": ["ch3"],
+      "plant": [
+        "t_books",
+        "books2"
+      ],
+      "payoff": [
+        "ch3"
+      ],
       "payoffSeason": "S1",
       "status": "planted",
       "note": "第三夜她承认「另一个时间线」是书里的比喻"
@@ -66,8 +93,13 @@
       "id": "empty_chair",
       "label": "空椅子 + 外套 + 旧车票",
       "kind": "cross-season",
-      "plant": ["t_room", "room_coat"],
-      "payoff": ["S2"],
+      "plant": [
+        "t_room",
+        "room_coat"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planted",
       "note": "S2：第三个杯子；外套是你的尺码"
@@ -76,8 +108,12 @@
       "id": "handwriting47",
       "label": "第 47 条的笔迹",
       "kind": "cross-season",
-      "plant": ["ch2"],
-      "payoff": ["S2"],
+      "plant": [
+        "ch2"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planned",
       "note": "S2：是你的字"
@@ -86,8 +122,12 @@
       "id": "period",
       "label": "后台 Ovilia 名字后的句号",
       "kind": "cross-season",
-      "plant": ["ch3"],
-      "payoff": ["S2"],
+      "plant": [
+        "ch3"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planned",
       "note": "S2：可点的隐藏入口"
@@ -96,8 +136,12 @@
       "id": "radio0217",
       "label": "02:17 电台",
       "kind": "cross-season",
-      "plant": ["t_room"],
-      "payoff": ["S2"],
+      "plant": [
+        "t_room"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planted",
       "note": "S2：游戏页是她写给你的事"
@@ -106,8 +150,12 @@
       "id": "rain1223",
       "label": "12/23 的雨",
       "kind": "cross-season",
-      "plant": ["ch2"],
-      "payoff": ["S2"],
+      "plant": [
+        "ch2"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planned",
       "note": "S2：站点日志里的日期"
@@ -116,8 +164,12 @@
       "id": "seventh_night",
       "label": "第七夜",
       "kind": "cross-season",
-      "plant": ["season-card"],
-      "payoff": ["S3"],
+      "plant": [
+        "season-card"
+      ],
+      "payoff": [
+        "S3"
+      ],
       "payoffSeason": "S3",
       "status": "planned",
       "note": "S3：真正的最后一夜"
@@ -126,8 +178,12 @@
       "id": "poem_echo",
       "label": "诗的原句",
       "kind": "cross-season",
-      "plant": ["name3"],
-      "payoff": ["S2"],
+      "plant": [
+        "name3"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planted",
       "note": "S2：真正的念真留言引用同一句"
@@ -136,11 +192,66 @@
       "id": "four_rooms",
       "label": "四个方块 / 四个房间",
       "kind": "cross-season",
-      "plant": ["t_room", "room_drawer"],
-      "payoff": ["S2"],
+      "plant": [
+        "t_room",
+        "room_drawer"
+      ],
+      "payoff": [
+        "S2"
+      ],
       "payoffSeason": "S2",
       "status": "planted",
       "note": "S2：四个房间是四个笼子"
+    }
+  ],
+  "fragments": [
+    {
+      "id": "frag_page",
+      "label": "被撕掉的一页",
+      "hint": "房间 · 桌角",
+      "status": "live"
+    },
+    {
+      "id": "frag_coat",
+      "label": "外套口袋里的旧车票",
+      "hint": "房间 · 椅背",
+      "status": "live"
+    },
+    {
+      "id": "frag_book",
+      "label": "没还的那本书",
+      "hint": "书架",
+      "status": "live"
+    },
+    {
+      "id": "frag_cup",
+      "label": "另一只杯子",
+      "hint": "第三夜",
+      "status": "planned"
+    },
+    {
+      "id": "frag_msg",
+      "label": "05:00 的消息",
+      "hint": "第二夜",
+      "status": "planned"
+    },
+    {
+      "id": "frag_scratch",
+      "label": "第 47 道划痕",
+      "hint": "第二夜",
+      "status": "planned"
+    },
+    {
+      "id": "frag_period",
+      "label": "名单后的句号",
+      "hint": "后台",
+      "status": "planned"
+    },
+    {
+      "id": "frag_seventh",
+      "label": "第七夜",
+      "hint": "更远的地方",
+      "status": "planned"
     }
   ]
 }

@@ -74,6 +74,16 @@ for (const seed of seeds.seeds || []) {
   }
 }
 
+// 碎片
+for (const frag of seeds.fragments || []) {
+  if (frag.status === "live" && !(story.vars && Object.prototype.hasOwnProperty.call(story.vars, frag.id))) {
+    errors.push(`碎片 ${frag.id}：标了 live，但 vars 里没有这个标记`);
+  }
+  if (frag.status !== "live") {
+    warnings.push(`碎片 ${frag.id}：还没接（${frag.hint || ""}）`);
+  }
+}
+
 // 体量
 let chars = 0;
 let messages = 0;

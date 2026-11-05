@@ -13,6 +13,7 @@ import path from 'node:path';
 const ROOT = 'assets/stories/nianzhen';
 const SRC = path.join(ROOT, 'src');
 const OUT = path.join(ROOT, 'nianzhen.json');
+const SEEDS = path.join(ROOT, 'seeds.json');
 
 const files = fs
   .readdirSync(SRC)
@@ -71,6 +72,9 @@ for (const { file, data } of chapters) {
     });
   }
 }
+
+const seedData = fs.existsSync(SEEDS) ? JSON.parse(fs.readFileSync(SEEDS, 'utf8')) : null;
+if (seedData && seedData.fragments) world.meta.fragments = seedData.fragments;
 
 fs.writeFileSync(OUT, JSON.stringify(world, null, 2) + '\n');
 console.log(
