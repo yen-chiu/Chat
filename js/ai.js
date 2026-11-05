@@ -407,7 +407,8 @@
      写 [[表情:id]]。这里负责把这两种标记渲染成真正的气泡。 */
 
   var SEGMENT_SPLIT = '[[分条]]';
-  var STICKER_RE = /^\[\[表情:([^\]\s]+)\]\]$/;
+  // 只认「[[表情:id]]」这一种写法；夹在句子中间也认，冒号半角全角都行
+  var STICKER_MARK = /\[\[\s*表情\s*[:：]\s*([^\]\s]+)\s*\]\]/g;
 
   function stickerOf(id) {
     var list = (personaPack && personaPack.emoticons) || [];
@@ -417,9 +418,19 @@
     return null;
   }
 
-  function parseSticker(raw) {
-    var m = String(raw || '').trim().match(STICKER_RE);
-    return m ? stickerOf(m[1]) : null;
+  /** 把一段话拆成文字块和表情块：标记夹在句子中间也能拆出来 */
+  function splitPieces(part) {
+    var pieces = [];
+    var last = 0;
+    var m;
+    STICKER_MARK.lastIndex = 0;
+    while ((m = STICKER_MARK.exec(part))) {
+      if (m.index > last) pieces.push({ text: part.slice(last, m.index) });
+      pieces.push({ sticker: m[1] });
+      last = m.index + m[0].length;
+    }
+    if (last < part.length) pieces.push({ text: part.slice(last) });
+    return pieces;
   }
 
   /** 流式还没收完时，把最后一个没闭合的 [[ 之后先藏起来，别露出半截标记 */
@@ -432,8 +443,17 @@
   }
 
   function splitReply(text, streaming) {
-    var parts = String(text || '').split(SEGMENT_SPLIT);
-    if (streaming && parts.length) parts[parts.length - 1] = maskPartialMarker(parts[parts.length - 1]);
+    var chunks = String(text || '').split(SEGMENT_SPLIT);
+    if (streaming && chunks.length) chunks[chunks.length - 1] = maskPartialMarker(chunks[chunks.length - 1]);
+
+    var parts = [];
+    chunks.forEach(function (chunk) {
+      splitPieces(chunk).forEach(function (piece) {
+        // 纯空白不单独占一条
+        if (piece.text !== undefined && !piece.text.trim()) return;
+        parts.push(piece);
+      });
+    });
     return parts;
   }
 
@@ -461,11 +481,18 @@
     return bubbles;
   }
 
-  function paintPart(bubble, raw) {
-    var sticker = parseSticker(raw);
-    if (sticker) {
+  function paintPart(bubble, piece) {
+    bubble.style.display = '';
+
+    if (piece.sticker !== undefined) {
+      var sticker = stickerOf(piece.sticker);
       bubble.classList.add('wd-msg__bubble--sticker');
       bubble.innerHTML = '';
+      if (!sticker) {
+        // 认不出的 id：宁可空着，也别把 [[表情:xxx]] 原样漏在聊天里
+        bubble.style.display = 'none';
+        return null;
+      }
       if (sticker.kind === 'image') {
         var img = document.createElement('img');
         img.className = 'wd-sticker';
@@ -489,7 +516,7 @@
       content.className = 'wd-msg__content';
       bubble.appendChild(content);
     }
-    content.innerHTML = window.WDMarkdown.render(raw);
+    content.innerHTML = window.WDMarkdown.render(piece.text);
     return content;
   }
 
@@ -514,12 +541,11 @@
   function paintReply(node, text, options) {
     options = options || {};
     var parts = splitReply(text, options.streaming);
-    while (parts.length > 1 && !parts[parts.length - 1].trim()) parts.pop();
 
     var bubbles = ensureBubbles(node, parts.length);
     var lastContent = null;
-    parts.forEach(function (raw, i) {
-      var content = paintPart(bubbles[i], raw);
+    parts.forEach(function (piece, i) {
+      var content = paintPart(bubbles[i], piece);
       if (content) {
         content.classList.toggle('is-streaming', !!options.streaming);
         if (options.streaming) content.setAttribute('aria-busy', 'true');
@@ -528,7 +554,7 @@
       }
     });
 
-    node.stack.hidden = !parts.join('').trim();
+    node.stack.hidden = !parts.length;
     if (options.caret) {
       if (lastContent) caretAnchor(lastContent).appendChild(options.caret);
       else if (bubbles.length) bubbles[bubbles.length - 1].appendChild(options.caret);
