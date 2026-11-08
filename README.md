@@ -2,7 +2,7 @@
 
 # 与念真聊天中
 
-一个小型「聊天站」，也是 [Wendell 的博客](https://yenchiu.com) 的子站。现在它不止能聊天：里面还装了一个对话式小游戏和一个自带模型的 AI 页。
+一个小型「聊天站」，也是 [Wendell 的博客](https://yenchiu.com) 的子站。现在它不止能聊天：里面还装了一个对话式小游戏和一个能接自己模型的念真 · AI 页。
 
 > **以主站为准**：线上只有一份——[yenchiu.com/chat](https://yenchiu.com/chat/)，它由 `yen-chiu.github.io` 仓库的 `chat/` 目录发布。那边才是改代码的地方；**本仓库只是偶尔打一次的快照备份**，不跟随每次改动（GitHub Pages 已关闭，`yen-chiu.github.io/Chat/` 不再提供访问）。
 >
@@ -25,10 +25,10 @@
 | 模块 | 地址 | 是什么 |
 | --- | --- | --- |
 | 与念真聊天 | `/` | 原来的脚本化对话，她按 `assets/dialog.json` 里的剧本回你 |
+| 念真 · AI | `/ai.html` | 填自己的 API Key，接任何 OpenAI 兼容接口；带人格、流式输出、本地工具与联网搜索 |
 | 三个夜晚 | `/stories.html` | 三季对话故事的入口（`/story.html`、`/story-s2.html`、`/story-s3.html`），按「夜」分章 |
 | 异次元通讯 | `/play.html?a=miko` | 搬进来的网页版：原版与「次元复苏」的剧情、词典、图鉴、动态 |
 | 生命线 | `/play.html?a=lifeline` | 搬进来的网页版：和坠毁在陌生星球的泰勒用消息保持联系 |
-| 自带模型的 AI | `/ai.html` | 填自己的 API Key，接任何 OpenAI 兼容接口；带人格、流式输出、本地工具与联网搜索 |
 | 凌晨两点十七分 | `/game.html` | 一个即时通讯式的短篇剧情，45 个节点、4 个结局，约 12 分钟 |
 | 致谢 | `/credits.html` | 这个小站站着的开源项目，以及各自帮了什么忙 |
 
