@@ -11,12 +11,13 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 
-const FILES = ['css/shell.css', 'css/ambient.css', 'css/play.css', 'js/shell.js', 'js/ambient.js', 'js/ai.js', 'js/enhance.js'];
+const FILES = ['css/shell.css', 'css/ambient.css', 'css/play.css', 'css/stories.css', 'js/shell.js', 'js/ambient.js', 'js/ai.js', 'js/enhance.js'];
 const PAGES = [
   'index.html',
   'ai.html',
   'game.html',
   'credits.html',
+  'stories.html',
   'story.html',
   'story-s2.html',
   'story-s3.html',
