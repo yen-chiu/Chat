@@ -23,16 +23,20 @@
 | 模块 | 地址 | 是什么 |
 | --- | --- | --- |
 | 与念真聊天 | `/` | 原来的脚本化对话，她按 `assets/dialog.json` 里的剧本回你 |
+| 第一 / 二 / 三季 | `/story.html`、`/story-s2.html`、`/story-s3.html` | 按「夜」分章的对话故事 |
+| 异次元通讯 | `/play.html?a=miko` | 搬进来的网页版：原版与「次元复苏」的剧情、词典、图鉴、动态 |
+| 生命线 | `/play.html?a=lifeline` | 搬进来的网页版：和坠毁在陌生星球的泰勒用消息保持联系 |
 | 自带模型的 AI | `/ai.html` | 填自己的 API Key，接任何 OpenAI 兼容接口；带人格、流式输出、本地工具与联网搜索 |
 | 凌晨两点十七分 | `/game.html` | 一个即时通讯式的短篇剧情，45 个节点、4 个结局，约 12 分钟 |
 | 致谢 | `/credits.html` | 这个小站站着的开源项目，以及各自帮了什么忙 |
 
-三个模块共用一套设计令牌（`css/shell.css`），支持浅色 / 深色 / 跟随系统，抽屉里可以切换；背景还有「自动 / 静 / 萤火」三档氛围。
+这些模块共用一套设计令牌（`css/shell.css`），支持浅色 / 深色 / 跟随系统，抽屉里可以切换；背景还有「自动 / 静 / 萤火」三档氛围。
 
 ## 设计取舍
 
 - **纯静态、无构建**：没有打包器，改完刷新就是最新的。代价是不能用 npm 依赖，所以 Markdown 渲染、剧情运行时、SSE 客户端都是自己写的几十到两百行。
 - **模块 = 独立页面**：抽屉只负责跳转，不做前端路由。任何一页崩了不会拖垮其他页，也方便单独分享链接。
+- **搬进来的两个网页版原样保留**：`apps/miko-web/` 与 `apps/lifeline-web/` 是另外两个站的完整副本（各自的样式、剧情引擎、存档键都没动），只由 `play.html` 加一层顶栏 + iframe 装起来。它们的音乐、存档、后日谈 AI 全都照旧；以后要更新这两个游戏，直接从各自仓库整体覆盖这两个目录。
 - **AI 模块不经过服务器**：Key 只写进本机 `localStorage`，请求由浏览器直接发往你填的地址。本站没有后端，也不经手对话内容。
 - **旧页面尽量不动**：聊天页原有的 `main.min.css` + `index-min.js` 逻辑没改，新样式叠在 `shell.css` 里覆盖。
 
@@ -43,7 +47,11 @@
 ├── index.html                  # 聊天页（旧）
 ├── game.html                   # 对话游戏
 ├── ai.html                     # AI 模块
+├── play.html                   # 内嵌应用页：装抽屉里的两个网页版游戏
 ├── credits.html                # 致谢
+├── apps/
+│   ├── miko-web/               # 异次元通讯 · 网页版（整站副本）
+│   └── lifeline-web/           # 生命线 · 网页版（整站副本）
 ├── css/
 │   ├── main.min.css            # 旧聊天页样式
 │   ├── enhance.css             # 旧页面的增强覆盖
@@ -51,6 +59,7 @@
 │   ├── ambient.css             # 氛围背景：天光 / 台灯 / 颗粒 / 光尘（新）
 │   ├── game.css                # 游戏页（新）
 │   ├── ai.css                  # AI 页（新）
+│   ├── play.css                # 内嵌应用页：顶栏 + iframe 舞台（新）
 │   └── credits.css             # 致谢页（新）
 ├── js/
 │   ├── index-min.js            # 旧聊天逻辑
@@ -87,6 +96,8 @@ python -m http.server 8000
 ## 怎么加东西
 
 **加一个模块**：写一个 HTML 页，引入 `css/shell.css` 和 `js/shell.js`，在页面里放一个 `<span data-wd-apps-slot></span>`（抽屉按钮会插进去），然后到 `js/shell.js` 的 `APPS` 里加一条注册信息。
+
+**搬一个完整的网页版应用**：把整站复制到 `apps/<名字>/`（保持它自己的相对路径不变），在 `play.html` 顶部那个 `APPS` 表里加一条 `{ name, note, src, theme, title }`，再到 `js/shell.js` 的 `APPS` 里注册一条 `href: 'play.html?a=<名字>'`。这样它就和站内的页面共用同一个抽屉；仓库里的 `miko-web`、`lifeline-web` 都是这么进来的。
 
 **加一个故事**：复制 `assets/stories/night-radio.json`，照着 [格式说明](assets/stories/README.md) 改，然后 `node tools/check-story.mjs 你的文件.json`。
 

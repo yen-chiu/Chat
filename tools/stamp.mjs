@@ -11,8 +11,17 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 
-const FILES = ['css/shell.css', 'css/ambient.css', 'js/shell.js', 'js/ambient.js', 'js/ai.js', 'js/enhance.js'];
-const PAGES = ['index.html', 'ai.html', 'game.html', 'credits.html'];
+const FILES = ['css/shell.css', 'css/ambient.css', 'css/play.css', 'js/shell.js', 'js/ambient.js', 'js/ai.js', 'js/enhance.js'];
+const PAGES = [
+  'index.html',
+  'ai.html',
+  'game.html',
+  'credits.html',
+  'story.html',
+  'story-s2.html',
+  'story-s3.html',
+  'play.html'
+];
 
 const hash = crypto.createHash('sha1');
 for (const f of FILES) {
