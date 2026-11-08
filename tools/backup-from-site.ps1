@@ -24,8 +24,13 @@ if (-not (Test-Path -LiteralPath $Source)) { throw "找不到主站目录：$Sou
 if (-not (Test-Path -LiteralPath (Join-Path $Dest '.git'))) { throw "目标不是 git 仓库：$Dest" }
 
 $blogRepo = Split-Path -Path $Source -Parent
-$sha = (& git -C $blogRepo rev-parse --short HEAD 2>$null)
-if (-not $sha) { $sha = 'unknown' }
+$sha = 'unknown'
+try {
+    $out = (& git -C $blogRepo rev-parse --short HEAD 2>$null)
+    if ($out) { $sha = $out.Trim() }
+} catch {
+    # 源目录不在 git 仓库里（比如临时测试目录）时就当 unknown，不中断
+}
 
 $copied = New-Object System.Collections.Generic.List[string]
 $same = 0
