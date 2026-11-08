@@ -741,6 +741,11 @@
       }
     }
 
+    if (!st.restored && st.marks[id]) {
+      st.cur = st.marks[id].cur || 0;
+      st.ctx = st.marks[id].ctx ? { labels: new Set(st.marks[id].ctx.labels), resume: st.marks[id].ctx.resume, target: st.marks[id].ctx.target } : null;
+    }
+
     syncReveals();
     $('#chat-title').textContent = chatWho(ch);
     st.typing = false;
@@ -984,11 +989,28 @@
   /* ---------------- 每章聊天记录 ---------------- */
   var LOG_CAP = 6000;
 
+  // 旧版写坏过的存档里同一段对话可能被整段重复记录多份（X+X+X）：
+  // 若日志正好等于某个前缀的整数倍，只保留一份。
+  function trimPeriodicLog(L) {
+    var n = L ? L.length : 0;
+    if (n < 6) return L;
+    var key = function (e) { return e.c ? ('c' + e.c.i) : ('r' + e.r); };
+    for (var p = 3; p <= Math.floor(n / 2); p++) {
+      if (n % p !== 0) continue;
+      var same = true;
+      for (var i = p; i < n; i++) {
+        if (key(L[i]) !== key(L[i - p])) { same = false; break; }
+      }
+      if (same) return L.slice(0, p);
+    }
+    return L;
+  }
+
   function chapterLog(id) {
     id = id || st.chapterId;
     if (!st.chatlog) st.chatlog = {};
     if (!st.chatlog[id]) st.chatlog[id] = [];
-    return st.chatlog[id];
+    return trimPeriodicLog(st.chatlog[id]);
   }
 
   function logRow(row) {
@@ -1009,22 +1031,37 @@
   // 重进本章：把这一章真实的对话（含选过的选项）整段放回去
   function replayLog(ch) {
     var L = chapterLog(ch.id);
-    if (!L.length) return false;
+    if (!L.length) return -1;
+    var last = -1, seen = {};
     L.forEach(function (e) {
+      var key = e.c ? ('c' + e.c.i) : ('r' + e.r);
+      var ct = e.c ? ('我|' + e.c.t) : (function () {
+        var rr = ch.rows[e.r]; return rr ? ((rr.who || '') + '|' + (rr.text || '')) : '';
+      })();
+      if (seen[key] || (ct && seen['t' + ct])) return;   // 索引或内容已出现过：旧存档里的重复段落不再显示
+      seen[key] = 1;
+      if (ct) seen['t' + ct] = 1;
       if (e.c) {
+        last = e.c.i;
         appendRow({ i: e.c.i, who: '我', text: e.c.t, dir: 'right', tags: [] }, true);
       } else {
         var r = ch.rows[e.r];
         if (!r) return;
+        last = e.r;
         if (r.choice !== undefined) return;
         appendRow(r, true);
       }
     });
-    return true;
+    return last;
   }
 
   function restoreHistory(ch) {
-    if (replayLog(ch)) return;      // 有完整记录就整段放回
+    var last = replayLog(ch);       // 有完整记录就整段放回
+    if (last >= 0) {
+      // 续播位置至少推进到日志末尾，避免带着旧书签重播已显示的段落
+      if (last + 1 > st.cur) st.cur = last + 1;
+      return;
+    }
     // 老存档没有记录：退回最近若干行做视觉衔接
     var start = Math.max(0, st.cur - 14);
     for (var i = start; i < st.cur; i++) {
