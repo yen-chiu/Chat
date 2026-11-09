@@ -9,12 +9,46 @@
 ## 0. 定妆照（先画这张，后面全部拿它当参考图）
 
 ```text
-character reference sheet, nianzhen, a 20-year-old Chinese college student, short dark-brown bob parted in the middle with slightly flipped ends, one small gold hairpin on her LEFT side, dark eyes with a faint olive-green tint, white dress shirt with sleeves rolled to the elbow, dark teal knit vest, a very small gold hoop earring in her LEFT ear only, right ear bare, a faint dimple on her RIGHT cheek only, standing in a quiet night study, three-quarter view, neutral expression then a small closed-mouth smile, soft key light from a desk lamp on the left, cool blue window light on the right, soft anime illustration, painterly digital art, muted teal and warm amber palette, fine line, detailed fabric folds, clean background, no text
+character reference sheet, nianzhen, a 20-year-old Chinese college student, front view and three-quarter view side by side, face structure: soft oval face, slightly full lower cheeks that still keep a little schoolgirl roundness, gentle rounded jawline, jaw angles barely visible, chin short and slightly rounded rather than pointed, cheekbones low and soft, small forehead, short dark-brown bob parted in the middle with slightly flipped ends, one small gold hairpin pinned on her LEFT side, eyebrows thin and nearly straight, eyes a little large with slightly downturned outer corners and a soft inner double eyelid, irises very dark with a faint olive-green tint, low nose bridge with a small rounded tip, lips full on the lower lip with a natural pale rose color, a very small gold hoop in her LEFT ear only, right ear bare, a faint dimple on her RIGHT cheek that only shows when she smiles, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, hands relaxed, pencil smudges on the knuckles, plain light-grey background, even flat lighting, neutral expression plus one small closed-mouth smile, soft anime illustration, painterly digital art, fine line, clean design-sheet layout, no text
 ```
 
-**要点**：发夹在左、耳圈在左、酒窝在右——这三处是她的识别特征，后面每条 prompt 都要重复一遍。
+**负面词（这张一定要带，否则脸会被拉成锥子）**
+
+```text
+sharp pointed chin, V-line jaw, extremely narrow face, shrunk lower face, high razor cheekbones, gaunt cheeks, hollow cheekbones, model face, idol proportions, adult-woman maturity, oversized eyes, plastic skin, heavy makeup, contouring, glossy lips
+```
+
+**检查清单（出图后逐条看，有一条不对就重画，别将就）**
+
+- 下颌是**圆弧**的，能摸到一点点软肉，不是一条直线切下来的
+- 下巴**短且圆**，不向前翘、不收成尖
+- 脸下半部分不比上半部分窄太多（锥子脸就是这里塌的）
+- 眼睛有上眼睑的厚度，不是两颗贴在脸上的大瞳孔
+- 笑的时候右脸有酒窝，左耳有圈、右边没有
 
 > 想要「专业设定稿」那种三视图＋表情表＋细节表，见文末 **第 12 节**。那一节是拿来做一致性锚点的，第 0 节这张是拿来直接用的。
+
+### 0.1 脸型为什么要单独写（以及怎么修）
+
+**默认审美是锥子脸。** 不写脸型，模型会默认走「网红/idol 脸」：下半脸收窄、下巴削尖、颧骨抬高。要它画一张圆润的学生脸，必须在 prompt 里写**结构**，不能只写「可爱」「年轻」。
+
+三个层次，从弱到强：
+
+1. **正向描述**：`soft oval face` / `rounded jawline` / `short rounded chin` / `slightly full lower cheeks` —— 光写这个，模型多半只当形容词
+2. **写明“不是”**：`not pointed, no sharp jaw angle, jaw wider than the cheekbones` —— 自然语言模型对这种否定式约束响应更好
+3. **负面词**：`sharp pointed chin, V-line jaw, gaunt cheeks, model face` —— SD / MJ 的 negative 位必填
+
+**常用替换词对照**（左边是会被画成锥子脸的写法，右边是能保住圆脸的写法）：
+
+| 别写 | 改写成 |
+| --- | --- |
+| `delicate features`、`beautiful face` | `soft round features, full lower face` |
+| `slim jaw`、`sharp jawline` | `soft rounded jawline, gentle jaw angle` |
+| `small chin` | `short chin, slightly rounded and set back` |
+| `high cheekbones` | `low soft cheekbones, no visible cheekbone edge` |
+| `mature`, `elegant` | `still has some schoolgirl roundness` |
+
+**如果还是尖**：把参考图（第 12.2 的三视图或这张定妆照）当 `--cref` 输入、权重提到 `--cw 100`；MJ 加 `--no pointy chin, V-shaped face`；SD 把负面词里的几条权重调到 1.3 左右。
 
 ---
 
@@ -23,7 +57,7 @@ character reference sheet, nianzhen, a 20-year-old Chinese college student, shor
 **角色锚点**
 
 ```text
-nianzhen, a 20-year-old Chinese college student, short dark-brown bob parted in the middle with slightly flipped ends, one small gold hairpin on her LEFT side, dark eyes with a faint olive-green tint, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, a small gold hoop in her LEFT ear only, a faint dimple on her RIGHT cheek
+nianzhen, a 20-year-old Chinese college student, soft oval face with slightly full lower cheeks and a short rounded chin, gentle rounded jawline, short dark-brown bob parted in the middle with slightly flipped ends, one small gold hairpin on her LEFT side, thin nearly-straight eyebrows, large eyes with slightly downturned outer corners and dark olive-tinted irises, low nose bridge with a small round tip, full lower lip in pale rose, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, a small gold hoop in her LEFT ear only, a faint dimple on her RIGHT cheek
 ```
 
 **风格锚点**
@@ -35,8 +69,10 @@ soft anime illustration, painterly digital art, cinematic lighting, muted teal a
 **负面词**
 
 ```text
-extra fingers, deformed hands, plastic skin, oversaturated, heavy bloom, text, watermark, signature, long hair, pink or blonde hair, school uniform, chibi, glasses (unless specified), multiple people (unless specified)
+extra fingers, deformed hands, plastic skin, oversaturated, heavy bloom, text, watermark, signature, long hair, pink or blonde hair, school uniform, chibi, glasses (unless specified), multiple people (unless specified), sharp pointed chin, V-line jaw, extremely narrow face, high razor cheekbones, gaunt cheeks, model face, idol proportions, mature adult face, heavy makeup
 ```
+
+> 脸型那几句（`soft oval face … short rounded chin`）和负面词里那几个锥子脸条目，都是因为不写它默认就削下巴，别删。
 
 ---
 
@@ -319,11 +355,12 @@ flat lay on a wooden desk: a small gold hairpin, a kalimba, a fountain pen, a dr
    - SD / Flux：img2img 或 IP-Adapter，denoise 0.45–0.6
    - 自然语言模型（GPT-Image / Nano Banana 之类）：直接说「同一个人，参考这张图的发型、发夹位置、服装，只改场景和动作」
 2. **三条锚点每张都写**：金色一字夹在**左**、小金圈耳环在**左**、酒窝在**右脸**。这三句一漏，脸就开始漂。
-3. **锁 seed**：同一组场景用同一个 seed，只改场景词；换 seed 等于换人。
-4. **一次只改一个变量**：先固定人和光，再换动作；同时改场景、光线、服装，角色会散。
-5. **别让她穿别的**：青绿针织背心 + 白衬衫是识别符；确实需要换装（比如睡衣、外套）时，保留发夹、耳圈和发型。
-6. **手要单独检查**：她这组图大量是握笔、弹琴、捏黏土，手最容易崩，出图后放大看指节。
-7. **情绪不要过**：她是「嘴硬心软」，不是元气少女。笑是收着的，眼睛比嘴先笑。
+3. **脸型要写结构，别写形容词**：`soft oval face, slightly full lower cheeks, short rounded chin, gentle rounded jawline` 四条一起写，负面词带 `sharp pointed chin, V-line jaw, gaunt cheeks`。只写「可爱/年轻」它就会给你锥子脸（见 0.1）。
+4. **锁 seed**：同一组场景用同一个 seed，只改场景词；换 seed 等于换人。
+5. **一次只改一个变量**：先固定人和光，再换动作；同时改场景、光线、服装，角色会散。
+6. **别让她穿别的**：青绿针织背心 + 白衬衫是识别符；确实需要换装（比如睡衣、外套）时，保留发夹、耳圈和发型。
+7. **手要单独检查**：她这组图大量是握笔、弹琴、捏黏土，手最容易崩，出图后放大看指节。
+8. **情绪不要过**：她是「嘴硬心软」，不是元气少女。笑是收着的，眼睛比嘴先笑。
 
 ---
 
