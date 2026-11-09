@@ -9,8 +9,10 @@
 ## 0. 定妆照（先画这张，后面全部拿它当参考图）
 
 ```text
-character reference sheet, nianzhen, a 20-year-old Chinese college student, front view and three-quarter view side by side, face structure: soft oval face, slightly full lower cheeks that still keep a little schoolgirl roundness, gentle rounded jawline, jaw angles barely visible, chin short and slightly rounded rather than pointed, cheekbones low and soft, small forehead, short dark-brown bob parted in the middle with slightly flipped ends, one small gold hairpin pinned on her LEFT side, eyebrows thin and nearly straight, eyes a little large with slightly downturned outer corners and a soft inner double eyelid, irises very dark with a faint olive-green tint, low nose bridge with a small rounded tip, lips full on the lower lip with a natural pale rose color, a very small gold hoop in her LEFT ear only, right ear bare, a faint dimple on her RIGHT cheek that only shows when she smiles, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, hands relaxed, pencil smudges on the knuckles, plain light-grey background, even flat lighting, neutral expression plus one small closed-mouth smile, soft anime illustration, painterly digital art, fine line, clean design-sheet layout, no text
+character reference sheet, nianzhen, a 20-year-old Chinese college student, about 160 cm tall, slender but not fragile, soft narrow shoulders, standing with a slightly forward energetic posture, front view and three-quarter view side by side, face structure: soft oval face, slightly full lower cheeks that still keep a little schoolgirl roundness, gentle rounded jawline, jaw angles barely visible, chin short and slightly rounded rather than pointed, cheekbones low and soft, small forehead, short dark-brown bob parted in the middle with slightly flipped ends and a small ahoge on top, one small gold hairpin pinned on her LEFT side, eyebrows thin and nearly straight, eyes a little large with slightly downturned outer corners and a soft inner double eyelid, amber-teal irises, low nose bridge with a small rounded tip, lips full on the lower lip with a natural pale rose color, a very small gold hoop in her LEFT ear only, right ear bare, a faint dimple on her RIGHT cheek that only shows when she smiles, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, hands relaxed, pencil smudges on the knuckles, plain light-grey background, even flat lighting, neutral expression plus one small closed-mouth smile, soft anime illustration, painterly digital art, fine crisp linework, ultra-detailed, sharp focus, high resolution, no text
 ```
+
+**画质**：写 `fine crisp linework, ultra-detailed, sharp focus, high resolution` 这四句，别单写「4K」——多数模型不认识这个词。真正的 4K 靠出图后放大（见第 14 节）。
 
 **负面词（这张一定要带，否则脸会被拉成锥子）**
 
@@ -57,19 +59,19 @@ sharp pointed chin, V-line jaw, extremely narrow face, shrunk lower face, high r
 **角色锚点**
 
 ```text
-nianzhen, a 20-year-old Chinese college student, soft oval face with slightly full lower cheeks and a short rounded chin, gentle rounded jawline, short dark-brown bob parted in the middle with slightly flipped ends, one small gold hairpin on her LEFT side, thin nearly-straight eyebrows, large eyes with slightly downturned outer corners and dark olive-tinted irises, low nose bridge with a small round tip, full lower lip in pale rose, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, a small gold hoop in her LEFT ear only, a faint dimple on her RIGHT cheek
+nianzhen, a 20-year-old Chinese college student, about 160 cm tall, slender with soft narrow shoulders, soft oval face with slightly full lower cheeks and a short rounded chin, gentle rounded jawline, short dark-brown bob parted in the middle with slightly flipped ends and a small ahoge on top, one small gold hairpin on her LEFT side, thin nearly-straight eyebrows, large eyes with slightly downturned outer corners and amber-teal irises, low nose bridge with a small round tip, full lower lip in pale rose, white dress shirt with sleeves rolled to the elbow under a dark teal knit vest, a small gold hoop in her LEFT ear only, a faint dimple on her RIGHT cheek
 ```
 
 **风格锚点**
 
 ```text
-soft anime illustration, painterly digital art, cinematic lighting, muted teal and warm amber palette, subtle film grain, shallow depth of field, 35mm lens feel, detailed fabric folds, clean composition, no text
+soft anime illustration, painterly digital art, fine crisp linework, ultra-detailed, sharp focus, high resolution, cinematic lighting, muted teal and warm amber palette, subtle film grain, shallow depth of field, 35mm lens feel, detailed fabric folds, clean composition, no text
 ```
 
 **负面词**
 
 ```text
-extra fingers, deformed hands, plastic skin, oversaturated, heavy bloom, text, watermark, signature, long hair, pink or blonde hair, school uniform, chibi, glasses (unless specified), multiple people (unless specified), sharp pointed chin, V-line jaw, extremely narrow face, high razor cheekbones, gaunt cheeks, model face, idol proportions, mature adult face, heavy makeup
+extra fingers, deformed hands, plastic skin, oversaturated, heavy bloom, text, watermark, signature, long hair, pink or blonde hair, school uniform, chibi, glasses (unless specified), multiple people (unless specified), sharp pointed chin, V-line jaw, extremely narrow face, high razor cheekbones, gaunt cheeks, model face, idol proportions, mature adult face, heavy makeup, tall runway model, extremely long legs, lowres, blurry, smeared linework, jpeg artifacts
 ```
 
 > 脸型那几句（`soft oval face … short rounded chin`）和负面词里那几个锥子脸条目，都是因为不写它默认就削下巴，别删。
@@ -458,3 +460,84 @@ character proportion chart on a white background, full body standing straight, 7
 3. 12.3 四向旋转 + 12.5 细节表 → 当素材库
 4. 用上面三份做参考图，再回头画第 1–8 节那些插画
 5. 12.7 五连景别 → 每画完一张插画，顺手用它验一次「还是同一个人吗」
+
+---
+
+## 13. 配色（每个部位一个色号）
+
+出图时**别把 hex 塞进 prompt**（多数模型不认十六进制，塞了只会占字数）。正确用法是：先按下面的色卡定调，出图后拿色卡去校色 / 提词里只用颜色名 + 冷暖描述。
+
+### 13.1 部件配色表
+
+| 部位 | 说明 | HEX | prompt 里的说法 |
+| --- | --- | --- | --- |
+| 头发（底色） | 深棕近黑，偏冷 | `#2B2320` | dark espresso brown |
+| 头发（高光） | 灯光下的一层暖 | `#4A3C33` | warm brown highlight |
+| 皮肤（亮部） | 米白偏暖 | `#F5DFD2` | warm pale skin |
+| 皮肤（中间调） | 脸颊与脖子 | `#EEC9B8` | — |
+| 皮肤（阴影） | 下颌、颈侧 | `#D9A894` | — |
+| 腮红 | 很淡，只扫一点 | `#EFB8AE` | soft peach blush |
+| 眼睛（虹膜） | 琥珀偏青 | `#B98A3E` → 外圈 `#4E7F78` | amber-teal irises |
+| 眼睛（高光） | 双层高光，偏暖 | `#FFF6E0` | — |
+| 眉毛 | 比头发浅一档 | `#3A2E28` | thin dark brows |
+| 唇 | 自然偏珊瑚 | `#D98C82` | coral-tinged lips |
+| 衬衫 | 偏米的纸白 | `#F3EFE7` | off-white dress shirt |
+| 衬衫阴影 | 袖口、腋下 | `#DCD5C8` | — |
+| 针织背心 | 深青绿 | `#2F4F4A` | dark teal knit vest |
+| 背心高光 | 针织起毛处 | `#436B63` | — |
+| 金属（发夹/耳圈） | 暗金，不是亮金 | `#C8A558` | small gold hairpin |
+| 金属高光 | 点一下 | `#E8CE93` | — |
+| 铅笔灰 | 指节、纸边 | `#6E6A66` | graphite smudges |
+| 台灯暖光 | 场景主光 | `#FFB570` | warm amber lamp light |
+| 夜色 | 窗外/暗部 | `#1B1B1E` | deep night blue |
+| 屏幕冷光 | 电脑前的补光 | `#7AA7D9` | cool screen glow |
+
+> 两套青绿别混：**背心是深青绿 `#2F4F4A`**（衣服），**站点品牌青绿 `#22C3AA`/`#3FD1E1`** 只用在网页背景渐变和 UI，别画到衣服上。
+
+### 13.2 出图用的「带色块标注」版本
+
+模型会把文字画成鬼画符，所以**只让它画色块和引线**，字自己加：
+
+```text
+character color reference, the same character in three-quarter view on a plain light-grey background, with eight clean circular color swatches arranged in a column on the right, each swatch connected to a body part by a thin straight leader line: hair, skin, iris, lips, shirt, knit vest, gold hairpin, graphite smudge, swatches filled with flat color only, no text, no letters, flat even lighting, design-sheet layout, fine crisp linework, ultra-detailed
+```
+
+后期在 Figma / Photoshop 里补 `#2B2320 头发` 这样的标签。**顺序固定**（从上到下：发、肤、瞳、唇、衬衫、背心、金属、铅笔灰），方便每张图都对齐。
+
+### 13.3 出图后怎么校色
+
+1. 取一张最满意的图，用吸管在每个部位取一次色，和 13.1 对比
+2. 偏差超过一档（比如背心变成亮青）就不要了，重出；小偏差用「色彩平衡 / 可选颜色」拉回来
+3. 同一批图统一套一个 LUT 或曲线，色调才一致
+
+---
+
+## 14. 画质与 4K
+
+### 14.1 prompt 里怎么写
+
+**别单写 `4K`。** Midjourney 会忽略，SD 不认字符，多数模型只把它当噪声。有效的是这四句：
+
+```text
+fine crisp linework, ultra-detailed, sharp focus, high resolution
+```
+
+需要更硬的质感再加：`intricate details, clean edges, no blur, print quality`。
+负面词补：`lowres, blurry, smeared linework, jpeg artifacts, oversharpened, banding`。
+
+### 14.2 真正的 4K 靠放大，不靠 prompt
+
+- **原生分辨率**：MJ 默认 1024²（v7 可 `--ar` 到 2K 左右）；SD/Flux 原生 1024–1536。直接要 3840 宽，模型会给你放大的糊图。
+- **流程**：原生出图 → 选图 → 放大到 2 倍 → 再 2 倍（或一次 4 倍），每步之间做一次轻度锐化/降噪。
+- 工具：MJ 的 `--upgrade`（Creative / Subtle 两档）；SD WebUI 的 Hires.fix（2×，denoise 0.35–0.45）+ 4× 超分（ESRGAN / 4x-UltraSharp）；Topaz Gigapixel 也行。
+
+### 14.3 站内实际要多大
+
+| 用途 | 交付尺寸 | 说明 |
+| --- | --- | --- |
+| 聊天头像 | 512×512 | 源图留 1024² 备未来换 2x 屏 |
+| 欢迎屏自画像 | 900×1200 | 源图出 1800×2400 再缩 |
+| 关于页 / 文章配图 | 1600 宽足够 | 4K 是给「以后可能印出来」留的余量 |
+| 打印 / 设定稿 | 300 dpi，A3 约 3508×4961 | 这类才真的需要 4K+ |
+
+> 记住一条：**网页上用不到 4K**，站点上的图 1600 宽就够；4K 是母版，用来以后裁切、印刷、重排版。
