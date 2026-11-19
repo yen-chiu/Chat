@@ -135,3 +135,7 @@ python -m http.server 8000
 ## License
 
 MIT，详见 [LICENSE](LICENSE)。
+
+## 代码与内容授权
+
+程序代码保留 MIT。原创剧情与文案、第三方素材及既有授权的范围，见 [完整授权说明](CONTENT-LICENSE.md)。本说明不追溯撤回此前已授予的权利。
