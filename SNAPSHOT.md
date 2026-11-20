@@ -1,5 +1,7 @@
 # 快照记录
 
+> 本仓库已冻结：新版在 [yen-chiu/Echora](https://github.com/yen-chiu/Echora)（<https://yenchiu.com/Echora/>）。
+
 最近一次快照：**2026-11-09 02:06**（来源：`yen-chiu.github.io/chat`，博客仓库 commit `bad066c`）
 
 本仓库是「与念真聊天中」的存档。线上站点只有一处：<https://yenchiu.com/chat/>，

@@ -2,6 +2,8 @@
 
 # 与念真聊天中
 
+> **已迁出并冻结（2026-11-21）**：这个小站现在是独立仓库 [yen-chiu/Echora](https://github.com/yen-chiu/Echora)，线上地址 <https://yenchiu.com/Echora/>。本仓库与 [blog-v2/chat](https://github.com/yen-chiu/blog-v2/tree/master/chat) 只作为旧版「chat」存档保留，不再主动更新；页面左上角的提示条也不再改动。
+
 一个小型「聊天站」，也是 [Wendell 的博客](https://yenchiu.com) 的子站。现在它不止能聊天：里面还装了一个对话式小游戏和一个能接自己模型的念真 · AI 页。
 
 > **以主站为准**：线上只有一份——[yenchiu.com/chat](https://yenchiu.com/chat/)，它由 `yen-chiu.github.io` 仓库的 `chat/` 目录发布。那边才是改代码的地方；**本仓库只是偶尔打一次的快照备份**，不跟随每次改动（GitHub Pages 已关闭，`yen-chiu.github.io/Chat/` 不再提供访问）。
