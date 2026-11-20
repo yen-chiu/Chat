@@ -1,6 +1,6 @@
 # 快照记录
 
-> 本仓库已冻结（2026-11-21）：新版在 [yen-chiu/Echora](https://github.com/yen-chiu/Echora)，线上 <https://yenchiu.com/Echora/>。这里只作为旧版「chat」的存档，不再主动更新。
+> 本仓库已冻结（2026-11-21）：新版在 [yen-chiu/Echora](https://github.com/yen-chiu/echora)，线上 <https://yenchiu.com/echora/>。这里只作为旧版「chat」的存档，不再主动更新。
 
 最近一次快照：**2026-11-09 02:06**（来源：博客仓库的 `chat/` 目录，commit `bad066c`）
 
